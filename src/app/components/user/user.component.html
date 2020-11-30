@@ -1,0 +1,27 @@
+<div class="row border my-5 p-3 mx-5 rounded-lg" *ngIf="!deleted">
+    <div class="col">
+        <img src="{{user.avatar}}" alt="Avatar" class="w-100">
+    </div>
+    <div class="col-9 ml-4 pt-3">
+        <div class="row mb-4">
+            <h5>Nombre: <b>{{user.name}}</b></h5>
+        </div>
+        <div class="row mb-4">
+            <h5>Email: <b>{{user.email}}</b></h5>
+        </div>
+        <div class="row">
+            <h5>Id: <b>{{user.id}}</b></h5>
+        </div>        
+    </div>
+</div>
+<div class="mx-auto alert alert-danger text-center my-4" *ngIf="deleted">
+    <h3>User deleted</h3>
+</div>
+<div class="row text-center mt-5 pt-5">
+    <div class="col">
+        <button class="btn btn-outline-warning btn-block" [routerLink]="['../../users']">Return</button>
+    </div>
+    <div class="col" *ngIf="!deleted">
+        <button class="btn btn-outline-danger btn-block" (click)="delete()">Delete User</button>
+    </div>
+</div>

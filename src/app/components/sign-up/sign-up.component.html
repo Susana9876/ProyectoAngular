@@ -1,0 +1,82 @@
+<h2 class="display-4 text-center mb-5" *ngIf="!submited">Add a new user</h2>
+<h2 class="display-4 text-center" *ngIf="submited">User added!!</h2>
+<div class="row px-5 mx-5">
+    <div *ngIf="!submited" class="row col-12 ">
+        <form class="col-12" [formGroup]="form" (ngSubmit)="send()">
+            <div class="form-group row">
+                <div class="col">
+                    <label for="firstName">First name: </label>
+                    <input type="text" name="firstName" class="form-control" placeholder="George" formControlName="firstName" [class.is-invalid]="validFirstName">
+                    <div class="invalid-feedback" *ngIf="validFirstName"> Wrong Input </div>
+                </div>
+                <div class="col">
+                    <label for="lastName">Last name:</label>
+                    <input type="text" name="lastName" class="form-control" placeholder="The Curious" formControlName="lastName" [class.is-invalid]="validLastName">
+                    <div class="invalid-feedback" *ngIf="validLastName"> Wrong Input </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-7">
+                    <label for="job">Job:</label>
+                    <input type="text" name="job" class="form-control" placeholder="Junior Programmer" formControlName="job" [class.is-invalid]="validJob">
+                    <div class="invalid-feedback" *ngIf="validJob"> Wrong Input </div>
+                </div>
+                <div class="col">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" class="form-control" placeholder="example.email@email.com" formControlName="email" [class.is-invalid]="validEmail">
+                    <div class="invalid-feedback" *ngIf="validEmail"> Wrong Input </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-5">
+                    <label for="pass1">Password:</label>
+                    <input type="password" name="pass1" class="form-control" placeholder="Password" formControlName="pass1" [class.is-invalid]="validPass1">
+                    <div class="invalid-feedback" *ngIf="validPass1"> Wrong Input </div>
+                </div>
+                <div class="col">
+                    <label for="pass2">Confirm Password:</label>
+                    <input type="password" name="pass2" class="form-control" placeholder="Confirm Password" formControlName="pass2" [class.is-invalid]="validPass2">
+                    <div class="invalid-feedback" *ngIf="validPass2"> Passwords don't match </div>
+                </div>
+            </div>
+            <div class="form-group my-5 row">
+                <div class="col-12 input-group">
+                    <button class="btn btn-outline-success btn-block" type="submit">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="submited" class="row col-12 border my-5 py-5 rounded-lg">
+        <div class="col-12 ml-4 pt-3">
+            <div class="row mb-4">
+                <div class="col">
+                    <h5>First Name: <b>{{response.firstName}}</b></h5>
+                </div>
+                <div class="col">
+                    <h5>Last Name: <b>{{response.lastName}}</b></h5>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h5>Job: <b>{{response.job}}</b></h5>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h5>Email: <b>{{response.email}}</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>User id: <b>{{response.id}}</b></h5>
+                </div>
+                <div class="col">
+                    <h5>Password: <b>{{response.password | password}}</b></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="submited" class=" row col-12">
+        <button class="btn btn-block btn-outline-warning" (click)="addOther()">Add other user</button>
+    </div>
+</div>
